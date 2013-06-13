@@ -4,7 +4,6 @@
 
     npm install
     james
-    npm start
     iexplore http://localhost:9001
 
 ## Technology choices
