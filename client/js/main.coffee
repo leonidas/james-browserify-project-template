@@ -1,1 +1,1 @@
-alert require './foo.coffee'
+require('./reload.coffee')
