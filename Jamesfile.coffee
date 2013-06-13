@@ -36,7 +36,6 @@ liveReload = (port) ->
   reload = (refreshOnly = false) ->
     for connection in connections
       connection.sendUTF (if refreshOnly then 'refresh' else 'reload') 
-    console.log 'Reload now!'
 
   return reload
 
@@ -88,8 +87,8 @@ james.task 'actual_watch', ->
   james.watch 'client/**/*.jade', (ev, file) -> transmogrifyJade file
   james.watch 'client/**/*.styl', (ev, file) -> transmogrifyStylus file
 
-james.task 'build_debug', ['browserify_debug', 'jade_static', 'stylus', 'copy_files']
-james.task 'build', ['browserify', 'jade_static', 'stylus', 'copy_files']
+james.task 'build_debug', ['browserify_debug', 'jade_static', 'stylus']
+james.task 'build', ['browserify', 'jade_static', 'stylus']
 james.task 'watch', ['build_debug', 'actual_watch', 'browserify']
 james.task 'default', ['build', 'actual_watch']
 
