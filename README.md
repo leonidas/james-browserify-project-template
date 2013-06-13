@@ -22,4 +22,4 @@
   * coffee
   * jade
   * stylus
-  * images
+* public: static files
