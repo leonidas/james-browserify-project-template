@@ -1,1 +1,1 @@
-require('./reload.coffee')
+console.log 'Hello world! <3'
