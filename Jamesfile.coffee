@@ -7,39 +7,11 @@ shim       = require 'browserify-shim'
 browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 
-WebSocketServer = require('websocket').server
-WebSocketClient = require('websocket').client
-http = require('http')
+reload = require('james-reload')
+  proxy: 9001
+  reload: 9002
 
 copyFile = (file) -> james.read(file).write(file.replace('client/', 'public/'))
-
-liveReload = (port) ->
-  server = http.createServer (request, response) ->
-    response.writeHead 404
-    response.end()
-
-  server.listen port
-
-  wsServer = new WebSocketServer(
-    httpServer: server
-    autoAcceptConnections: false
-  )
-
-  connections = []
-  
-  wsServer.on "request", (request) ->
-    connection = request.accept(null, request.origin)
-    connections.push connection
-    connection.on "close", () ->
-      connections.splice connections.indexOf(connection), 1
-
-  reload = (refreshOnly = false) ->
-    for connection in connections
-      connection.sendUTF (if refreshOnly then 'refresh' else 'reload') 
-
-  return reload
-
-reload = liveReload(9002)
 
 transmogrifyCoffee = (debug) ->
   libs =
@@ -90,6 +62,6 @@ james.task 'actual_watch', ->
 james.task 'build_debug', ['browserify_debug', 'jade_static', 'stylus']
 james.task 'build', ['browserify', 'jade_static', 'stylus']
 james.task 'watch', ['build_debug', 'actual_watch', 'browserify']
-james.task 'default', ['build', 'actual_watch']
+james.task 'default', ['build', 'actual_watch', 'browserify']
 
 require('./server/server.coffee')
