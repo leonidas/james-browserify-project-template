@@ -9,8 +9,7 @@
     "james-jade-static": "0.1.x",
     "james-stylus": "0.1.x",
     "james-uglify": "0.1.x",
-    "browserify-shim": "~2.0.3",
-    "websocket": "~1.0.8"
+    "browserify-shim": "~2.0.3"
   },
   "dependencies": {
     "coffee-script": "1.6.x",
