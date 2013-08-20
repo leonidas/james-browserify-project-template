@@ -1,7 +1,7 @@
 # Project template for James.js and Browserify
 
 ## Getting started
-
+    git clone git@github.com:rikukissa/james-browserify-project-template.git
     npm install
     james
     iexplore http://localhost:9001
