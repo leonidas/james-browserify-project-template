@@ -7,8 +7,6 @@ shim       = require 'browserify-shim'
 browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 
-copyFile = (file) -> james.read(file).write(file.replace('client/', 'public/'))
-
 transmogrifyCoffee = (debug) ->
   libs =
     jquery:
