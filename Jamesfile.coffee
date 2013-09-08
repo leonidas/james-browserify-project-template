@@ -69,5 +69,6 @@ james.task 'build_debug', ['browserify_debug', 'jade_static', 'stylus']
 james.task 'build', ['browserify', 'jade_static', 'stylus']
 james.task 'watch', ['build_debug', 'actual_watch']
 james.task 'default', ['build_debug']
-james.task 'develop', ['server', 'reload']
+james.task 'httpd', ['server', 'reload']
+james.task 'develop', ['watch', 'httpd']
 
