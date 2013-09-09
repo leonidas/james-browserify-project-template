@@ -3,7 +3,7 @@
 ## Getting started
     git clone git@github.com:rikukissa/james-browserify-project-template.git
     npm install
-    james
+    james watch httpd
     iexplore http://localhost:9001
 
 ## Technology choices
