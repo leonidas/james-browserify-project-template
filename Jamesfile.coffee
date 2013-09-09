@@ -10,7 +10,7 @@ coffeeify  = require 'coffeeify'
 transmogrifyCoffee = (debug) ->
   libs =
     jquery:
-      path: './client/js/vendor/jquery-1.10.1.min.js'
+      path: './client/js/vendor/jquery/jquery.min.js'
       exports: '$'
 
   bundle = james.read shim(browserify(), libs)

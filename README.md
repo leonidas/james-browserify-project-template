@@ -3,6 +3,7 @@
 ## Getting started
     git clone git@github.com:rikukissa/james-browserify-project-template.git
     npm install
+    bower install
     james watch httpd
     iexplore http://localhost:9001
 
@@ -14,6 +15,7 @@
 * Static [Jade](https://github.com/visionmedia/jade) templates
 * [Stylus](https://github.com/learnboost/stylus)
 * [UglifyJS](https://github.com/mishoo/UglifyJS2)
+* [Bower](http://bower.io/)
 
 ## Layout
 

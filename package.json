@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "coffee-script": "1.6.x",
-    "node-static": "0.6.x"
+    "node-static": "0.6.x",
+    "bower": "~1.2.6"
   },
   "scripts": {
     "start": "coffee server/server.coffee"
