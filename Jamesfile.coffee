@@ -7,6 +7,10 @@ shim       = require 'browserify-shim'
 browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 
+reload = require('james-reload')
+  proxy: 9001
+  reload: 9002
+
 transmogrifyCoffee = (debug) ->
   libs =
     jquery:
@@ -47,25 +51,23 @@ james.task 'jade_static', ->
 james.task 'stylus', ->
   james.list('client/**/*.styl').forEach transmogrifyStylus
 
-james.task 'actual_watch', ->
-  james.watch 'client/**/*.coffee', -> transmogrifyCoffee true
-  james.watch 'client/**/*.jade', (ev, file) -> transmogrifyJade file
-  james.watch 'client/**/*.styl', (ev, file) -> transmogrifyStylus file
+james.task 'watch', ->
+  james.watch 'client/**/*.coffee', ->
+    transmogrifyCoffee(true).promise.then reload
+
+  james.watch 'client/**/*.jade', (ev, file) ->
+    transmogrifyJade(file).promise.then reload
+
+  james.watch 'client/**/*.styl', (ev, file) ->
+    transmogrifyStylus(file).promise.then ->
+      reload
+        stylesheetsOnly: true
 
 james.task 'server', =>
   require('./server/server.coffee')
 
-james.task 'reload', =>
-  reload = require('james-reload')
-    proxy: 9001
-    reload: 9002
-  james.watch 'public/**/*.js', -> reload()
-  james.watch 'public/**/*.css', -> reload(true)
-  james.watch 'public/**/*.html', -> reload()
-
 james.task 'build_debug', ['browserify_debug', 'jade_static', 'stylus']
 james.task 'build', ['browserify', 'jade_static', 'stylus']
-james.task 'watch', ['build_debug', 'actual_watch']
 james.task 'default', ['build_debug']
-james.task 'httpd', ['server', 'reload']
+james.task 'httpd', ['server']
 
