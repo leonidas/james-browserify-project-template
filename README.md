@@ -5,7 +5,7 @@
     npm install
     bower install
     james watch httpd
-    iexplore http://localhost:9001
+    iexplore http://localhost:9002
 
 ## Technology choices
 
@@ -25,3 +25,7 @@
   * jade
   * stylus
 * public: static files
+
+## Branches
+* __angular__
+    * contains a version with AngularJS and a template app
