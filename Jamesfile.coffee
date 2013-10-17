@@ -8,8 +8,9 @@ browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 
 reload = require('james-reload')
-  proxy: 9001
-  reload: 9002
+  srcPort: 9001
+  proxyPort: 9002
+  debug: true
 
 transmogrifyCoffee = (debug) ->
   libs =
