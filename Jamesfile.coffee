@@ -7,10 +7,6 @@ shim       = require 'browserify-shim'
 browserify = require 'browserify'
 coffeeify  = require 'coffeeify'
 
-reload = require('james-reload')
-  srcPort: 9001
-  proxyPort: 9002
-  debug: true
 
 transmogrifyCoffee = (debug) ->
   libs =
@@ -53,6 +49,11 @@ james.task 'stylus', ->
   james.list('client/**/*.styl').forEach transmogrifyStylus
 
 james.task 'watch', ->
+  reload = require('james-reload')
+    srcPort: 9001
+    proxyPort: 9002
+    debug: true
+
   james.watch 'client/**/*.coffee', ->
     transmogrifyCoffee(true).promise.then reload
 
