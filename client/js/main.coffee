@@ -1,1 +1,1 @@
-alert require './foo.coffee'
+console.log 'Hello world! <3'
