@@ -24,8 +24,9 @@ transmogrifyCoffee = (debug) ->
   bundle.write('public/js/bundle.js')
 
 transmogrifyJade = (file) ->
+  filePath = process.env['PWD'] + '/' + file
   james.read(file)
-    .transform(jade)
+    .transform(jade(filename: filePath))
     .write(file
       .replace('client', 'public')
       .replace('.jade', '.html'))
