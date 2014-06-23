@@ -1,4 +1,8 @@
-# Project template for James.js and Browserify
+# Deprecated
+
+Please use [gulp-project-template](https://github.com/leonidas/gulp-project-template).
+
+Project template for James.js and Browserify
 
 ## Getting started
     git clone git@github.com:rikukissa/james-browserify-project-template.git
